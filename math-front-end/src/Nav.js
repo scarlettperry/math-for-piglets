@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Dropdown, Menu } from 'semantic-ui-react'
 
 class Nav extends Component {
   constructor() {
@@ -6,8 +7,12 @@ class Nav extends Component {
   }
   render(){
     return (
-      <div>
-        Hello from navbar
+      <div className="Nav">
+        <Menu vertical>
+         <Menu.Item>Home</Menu.Item>
+         <Menu.Item>Browse</Menu.Item>
+         <Menu.Item>Help</Menu.Item>
+       </Menu>
       </div>
     )
   }

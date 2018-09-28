@@ -3,6 +3,7 @@ import Questbutton from './Questbutton'
 import Questcard from './Questcard'
 import Createquest from './Createquest'
 import IncorrectQuestContainer from './IncorrectQuestContainer'
+import { Container, Header } from 'semantic-ui-react'
 
 class Questcontainer extends Component {
   constructor() {
@@ -11,11 +12,11 @@ class Questcontainer extends Component {
 
   render(){
     return (
-      <div>
-        <Questbutton />
-        <Questcard />
-        <Createquest />
-        <IncorrectQuestContainer />
+      <div className="Questcontainer">
+          <Questbutton />
+          <Questcard />
+          <Createquest />
+          <IncorrectQuestContainer />
       </div>
     )
   }

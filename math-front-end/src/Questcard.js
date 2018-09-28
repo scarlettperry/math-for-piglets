@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Input from './Input.js'
+import { Card } from 'semantic-ui-react'
 
 class Questcard extends Component {
   constructor() {
@@ -9,7 +10,6 @@ class Questcard extends Component {
   render(){
     return(
       <div>
-        Hi from Questcard, I'm in Questcontainer!
         <Input/>
       </div>
     )
