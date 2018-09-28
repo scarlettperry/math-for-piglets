@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Input from './Input.js'
-import * as math from 'mathjs'
 
 import { Card } from 'semantic-ui-react'
 
@@ -12,12 +11,20 @@ class Questcard extends Component {
   render(){
     return(
       <div>
-        {this.props.questions.map(question => <h3>{question.equation} answer: {(math.eval(question.equation))}</h3>)}
-        <Input handleSubmit={this.props.handleSubmit}/>
+        <h3>{this.props.question.equation} </h3>
+        <Input
+          question={this.props.question}
+          submit={this.props.submit}
+          />
       </div>
     )
   }
+}
 
+Questcard.defaultProps = {
+  question: {
+    equation: "1+1",
+  }
 }
 
 export default Questcard

@@ -4,36 +4,64 @@ import Questcard from './Questcard'
 import Createquest from './Createquest'
 import IncorrectQuestContainer from './IncorrectQuestContainer'
 import { Container, Header } from 'semantic-ui-react'
+import * as math from 'mathjs'
+
 
 class Questcontainer extends Component {
   constructor() {
     super()
-    this.state={
-      questions: []
+    this.state = {
+      operation: ""
     }
   }
 
-  componentDidMount(){
-    fetch("http://localhost:3000/api/v1/questions")
-    .then(res => res.json())
-    .then(questions => this.setState({questions}))
+  handleClick = (event) => {
+    this.setState({
+      operation: event.target.name
+    })
   }
 
-  handleSubmit = (event) => {
+  //make sure to show a question they haven't answered before
+  filterQuestion = () => {
+    let questionSent
+    if (this.state.operation === "") {
+      questionSent = this.props.questions[0]
+    }
+    else {
+      let filterQuestions = this.props.questions.filter(question => question.operation === this.state.operation)
+      let randomIndex = Math.floor(Math.random() * filterQuestions.length)
+      questionSent = filterQuestions[randomIndex]
+    }
+    return questionSent
+  }
+
+  handleSubmit = (event,questionObj) => {
     event.preventDefault()
-    alert(event.target[0].value)
-  }
+    let UserInput = parseInt(event.target[0].value)
+    let answer = math.eval(questionObj.equation)
+    let correct
 
-  randomQuestion = () => {
-    alert("hi")
+    if (UserInput===answer) {
+      correct = true
+    }
+    else {
+      correct = false
+    }
+    console.log(UserInput, answer, correct);
+    return correct
+    // POST FETCH
   }
 
   render(){
-    console.log(this.state);
+
+    console.log(this.state.answer);
+
     return (
       <div className="Questcontainer">
-        <Questbutton />
-        <Questcard questions={this.state.questions} handleSubmit={this.handleSubmit}/>
+        <Questbutton click={this.handleClick}/>
+        <Questcard
+          question={this.filterQuestion()}
+          submit={this.handleSubmit}/>
         <Createquest />
         <IncorrectQuestContainer />
       </div>

@@ -8,7 +8,7 @@ class Piggybank extends Component {
   render(){
     return(
       <div className="Piggybank">
-        Hello I'm a Piggybank
+        Hello I'm a pig.
       </div>
     )
   }
