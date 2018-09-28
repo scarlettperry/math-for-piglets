@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Button } from 'semantic-ui-react'
 
 class Questbutton extends Component {
   constructor() {
@@ -8,7 +9,11 @@ class Questbutton extends Component {
   render(){
     return(
       <div>
-        Hi I'm a button & I live in Questcontainer. My sibling is Questcard.
+        <Button size='big' color='teal'>+</Button>
+        <Button size='big' color='teal'>-</Button>
+        <Button size='big' color='teal'>÷</Button>
+        <Button size='big' color='teal'>x</Button>
+        <Button size='big' color='teal'>PEMDAS</Button>
       </div>
     )
   }

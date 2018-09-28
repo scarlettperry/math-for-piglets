@@ -7,7 +7,9 @@ class Calculator extends Component {
 
   render(){
     return(
-      <div>Hello I'm a Calculator</div>
+      <div className="Calculator">
+        Hello I'm a Calculator
+      </div>
     )
   }
 

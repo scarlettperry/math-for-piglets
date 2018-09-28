@@ -2,6 +2,33 @@
   text-align: center;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 10px;
+
+}
+
+.Nav{
+  grid-row: 2/4 ;
+}
+
+.Questcontainer{
+  grid-column: 2 / span 1;
+  grid-row: 2 / span 2;
+}
+
+.Calculator{
+  grid-column: 3;
+  grid-row: 2/4;
+}
+
+.Piggybank{
+    grid-column: 3;
+  grid-row: 2/4;
+  align-self: end;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

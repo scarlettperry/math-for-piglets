@@ -11,11 +11,11 @@ class Main extends Component {
 
   render(){
     return(
-      <div>
-        <Nav />
-        <Questcontainer />
-        <Piggybank />
-        <Calculator />
+      <div className="App wrapper">
+        <Nav/>
+        <Questcontainer/>
+        <Piggybank/>
+        <Calculator/>
       </div>
     )
   }
