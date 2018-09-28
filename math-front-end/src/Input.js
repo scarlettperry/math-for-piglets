@@ -7,7 +7,13 @@ class Input extends Component {
 
   render(){
     return(
-      <div>Hello I'm Input, I live in Questcard</div>
+      <div>Hello I'm Input, I live in Questcard
+        <form onSubmit={this.props.handleSubmit}>
+          <label>Enter your answer here:</label>
+          <input type='text'/>
+          <input type='submit'/>
+        </form>
+      </div>
     )
   }
 }

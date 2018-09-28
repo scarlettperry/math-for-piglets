@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Input from './Input.js'
+import * as math from 'mathjs'
 
 class Questcard extends Component {
   constructor() {
@@ -9,8 +10,8 @@ class Questcard extends Component {
   render(){
     return(
       <div>
-        Hi from Questcard, I'm in Questcontainer!
-        <Input/>
+        {this.props.questions.map(question => <h3>{question.equation} answer: {(math.eval(question.equation))}</h3>)}
+        <Input handleSubmit={this.props.handleSubmit}/>
       </div>
     )
   }
