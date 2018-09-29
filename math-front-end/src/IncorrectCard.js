@@ -1,15 +1,17 @@
 import React, {Component} from 'react'
 
 class IncorrectCard extends Component {
-  constructor() {
-    super()
-  }
+  // constructor() {
+  //   super()
+  // }
 
   render(){
-    console.log(this.props);
+    // console.log(this.props);
+
     return (
       <div>
-        Hi I'm the Incorrect Card
+        {this.props.question.equation}<br/>
+        <button>Try Again</button><br/>
       </div>
     )
   }

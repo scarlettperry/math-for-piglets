@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import { Button } from 'semantic-ui-react'
 
 class Questbutton extends Component {
-  constructor() {
-    super()
-  }
+  // constructor() {
+  //   super()
+  // }
 
   render(){
     return(

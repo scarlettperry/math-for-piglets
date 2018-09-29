@@ -3,7 +3,7 @@ import Questbutton from './Questbutton'
 import Questcard from './Questcard'
 import Createquest from './Createquest'
 import IncorrectQuestContainer from './IncorrectQuestContainer'
-import { Container, Header } from 'semantic-ui-react'
+// import { Container, Header } from 'semantic-ui-react'
 import * as math from 'mathjs'
 
 

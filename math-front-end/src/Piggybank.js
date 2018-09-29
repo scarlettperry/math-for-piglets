@@ -1,9 +1,11 @@
 import React, {Component} from 'react'
 
 class Piggybank extends Component {
-  constructor() {
-    super()
-  }
+  // constructor() {
+  //   super()
+  // }
+
+  //set state to be diff pig images?
 
   render(){
     return(

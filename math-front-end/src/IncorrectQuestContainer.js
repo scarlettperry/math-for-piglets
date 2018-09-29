@@ -24,16 +24,28 @@ class IncorrectQuestContainer extends Component {
     return question
   }
 
+  incorrectQuestionsIds = () => {
+    let question = this.incorrectQuestions()
+    let questionIds = question.map(question => question.question_id)
+    return questionIds
+  }
 
+  questions = () => {
+    let incorrectQIds = this.incorrectQuestionsIds()
+    let questions = this.props.allQuestions.filter(question => incorrectQIds.includes(question.id))
+    return questions
+  }
+
+  singleIncorrectQuestion = () => {
+    let questions = this.questions()
+    return questions.map(question => <IncorrectCard question={question} />)
+  }
 
   render(){
-    console.log(this.state.userQuestions);
-    // this.incorrectQuestions()
-    console.log(this.props);
 
     return(
-      <div>Hello form IncorrectQuestContainer
-        <IncorrectCard questions={this.incorrectQuestions()}/>
+      <div>
+        {this.singleIncorrectQuestion()}
       </div>
     )
   }
