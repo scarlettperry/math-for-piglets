@@ -11,7 +11,7 @@ class Questcard extends Component {
   render(){
     return(
       <div>
-        <h3>{this.props.question.equation} </h3>
+        <h3 className="question-equation">{this.props.question.equation} </h3>
         <Input
           question={this.props.question}
           submit={this.props.submit}

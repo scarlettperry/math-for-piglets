@@ -29,6 +29,11 @@
   align-self: end;
 }
 
+.question-equation{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 70pt;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
