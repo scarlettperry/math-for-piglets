@@ -11,7 +11,7 @@ class Main extends Component {
     this.state={
       questions: [],
       answeredQuestions: [],
-      user_id: 6
+      user_id: 10
     }
   }
 
@@ -30,14 +30,19 @@ class Main extends Component {
     return this.state.questions.filter(question => !this.state.answeredQuestions.includes(question.id))
   }
 
+  updateAnsweredQuestions = (id) =>{
+    return this.setState({answeredQuestions: [...this.state.answeredQuestions, id]})
+  }
+
   render(){
-    console.log(this.state);
+    console.log(this.state.answeredQuestions);
     return(
       <div className="App wrapper">
         <Nav/>
         <Questcontainer
           user={this.state.user_id}
           questions={this.filteredQuestionsForUser()}
+          updateAnsweredQuestionsState={this.updateAnsweredQuestions}
           />
         <Piggybank/>
         <Calculator/>
