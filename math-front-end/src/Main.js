@@ -31,51 +31,19 @@ class Main extends Component {
     return this.state.questions.filter(question => !this.state.answeredQuestions.includes(question.id))
   }
 
-  handleSubmit = (event,questionObj) => {
-    event.preventDefault()
-    let UserInput = parseInt(event.target[0].value)
-    let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
-
-    if (UserInput===answer) {
-      fetch('http://localhost:3000/api/v1/user_questions',{
-        method: "POST",
-        headers: {"Content-type": "application/json"
-        },
-        body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: true})
-      })
-
-      this.setState((prevState)=>{
-        return {piggyTotal: prevState.piggyTotal + 2}
-      })
-
-      // *********
-      // fetch to post piggy total
-      // *********
-
-    }
-    else {
-      fetch('http://localhost:3000/api/v1/user_questions',{
-        method: "POST",
-        headers: {"Content-type": "application/json"
-        },
-        body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: false})
-      })
-    }
-
-    // *********
-    // fetch a new question in the same category after
-    // *********
+  updateAnsweredQuestions = (id) =>{
+    return this.setState({answeredQuestions: [...this.state.answeredQuestions, id]})
   }
 
   render(){
-    console.log(this.state);
+    console.log(this.state.answeredQuestions);
     return(
       <div className="App wrapper">
         <Nav/>
         <Questcontainer
           user={this.state.user_id}
           questions={this.filteredQuestionsForUser()}
-          submit={this.handleSubmit}
+          updateAnsweredQuestionsState={this.updateAnsweredQuestions}
           />
         <Piggybank piggyTotal={this.state.piggyTotal}/>
         <Calculator/>
