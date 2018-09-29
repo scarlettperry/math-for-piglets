@@ -8,7 +8,7 @@ import * as math from 'mathjs'
 class Main extends Component {
   constructor() {
     super()
-    this.state={
+    this.state = {
       questions: [],
       answeredQuestions: [],
       user_id: 1,
@@ -47,6 +47,14 @@ class Main extends Component {
         },
         body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: true})
       })
+
+      this.setState((prevState)=>{
+        return {piggyTotal: prevState.piggyTotal + 2}
+      })
+
+      // *********
+      // fetch to post new Piggy total
+      // *********
     }
     else {
       fetch('http://localhost:3000/api/v1/user_questions',{
@@ -57,20 +65,20 @@ class Main extends Component {
       })
     }
     this.updateAnsweredQuestions(questionObj.id)
-    console.log(UserInput, answer);
+    // console.log(UserInput, answer);
     // *********
     // fetch a new question in the same category after a state change might render a new question
     // *********
   }
 
   render(){
-    console.log(this.state.answeredQuestions);
     return(
       <div className="App wrapper">
         <Nav/>
         <Questcontainer
           user={this.state.user_id}
           questions={this.filteredQuestionsForUser()}
+          allQuestions={this.state.questions}
           submit={this.handleSubmit}
           />
         <Piggybank piggyTotal={this.state.piggyTotal}/>

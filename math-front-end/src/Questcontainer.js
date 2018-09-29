@@ -34,9 +34,8 @@ class Questcontainer extends Component {
     }
     return questionSent
   }
-  
-  render(){
 
+  render(){
     return (
       <div className="Questcontainer">
         <Questbutton click={this.handleClick}/>
@@ -44,7 +43,8 @@ class Questcontainer extends Component {
           question={this.filterQuestion()}
           submit={this.props.submit}/>
         <Createquest />
-        <IncorrectQuestContainer />
+        <IncorrectQuestContainer user={this.props.user}
+        allQuestions={this.props.allQuestions}/>
       </div>
     )
   }

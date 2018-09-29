@@ -6,6 +6,7 @@ class IncorrectCard extends Component {
   }
 
   render(){
+    console.log(this.props);
     return (
       <div>
         Hi I'm the Incorrect Card
