@@ -9,6 +9,7 @@ class Piggybank extends Component {
     return(
       <div className="Piggybank">
         Hello I'm a pig.
+        <p>${this.props.piggyTotal}</p>
       </div>
     )
   }

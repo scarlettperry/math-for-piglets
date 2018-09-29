@@ -8,7 +8,7 @@ class Input extends Component {
   render(){
     return(
       <div>
-        <h3>{"round questions up .5 or above, else round down."}</h3>
+        {/* MAKE USER FRIENDLY <h3>{"round questions up .5 or above, else round down."}</h3> */}
         <form onSubmit={(event)=>{this.props.submit(event, this.props.question)}}>
           <input type="text" />
           <input type="submit"/>

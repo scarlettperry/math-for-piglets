@@ -11,7 +11,8 @@ class Main extends Component {
     this.state={
       questions: [],
       answeredQuestions: [],
-      user_id: 6
+      user_id: 3,
+      piggyTotal: 0
     }
   }
 
@@ -30,6 +31,42 @@ class Main extends Component {
     return this.state.questions.filter(question => !this.state.answeredQuestions.includes(question.id))
   }
 
+  handleSubmit = (event,questionObj) => {
+    event.preventDefault()
+    let UserInput = parseInt(event.target[0].value)
+    let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
+
+    if (UserInput===answer) {
+      fetch('http://localhost:3000/api/v1/user_questions',{
+        method: "POST",
+        headers: {"Content-type": "application/json"
+        },
+        body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: true})
+      })
+
+      this.setState((prevState)=>{
+        return {piggyTotal: prevState.piggyTotal + 2}
+      })
+
+      // *********
+      // fetch to post piggy total
+      // *********
+
+    }
+    else {
+      fetch('http://localhost:3000/api/v1/user_questions',{
+        method: "POST",
+        headers: {"Content-type": "application/json"
+        },
+        body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: false})
+      })
+    }
+
+    // *********
+    // fetch a new question in the same category after
+    // *********
+  }
+
   render(){
     console.log(this.state);
     return(
@@ -38,8 +75,9 @@ class Main extends Component {
         <Questcontainer
           user={this.state.user_id}
           questions={this.filteredQuestionsForUser()}
+          submit={this.handleSubmit}
           />
-        <Piggybank/>
+        <Piggybank piggyTotal={this.state.piggyTotal}/>
         <Calculator/>
       </div>
     )
