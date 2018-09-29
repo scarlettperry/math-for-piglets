@@ -31,6 +31,7 @@ class Questcontainer extends Component {
       let filterQuestions = this.props.questions.filter(question => question.operation === this.state.operation)
       let randomIndex = Math.floor(Math.random() * filterQuestions.length)
       questionSent = filterQuestions[randomIndex]
+      console.log(questionSent.user_questions);
     }
     return questionSent
   }
@@ -38,23 +39,31 @@ class Questcontainer extends Component {
   handleSubmit = (event,questionObj) => {
     event.preventDefault()
     let UserInput = parseInt(event.target[0].value)
-    let answer = math.eval(questionObj.equation)
-    let correct
+    let answer = math.eval(questionObj.equation).toFixed(0)
 
     if (UserInput===answer) {
-      correct = true
+      fetch('http://localhost:3000/api/v1/user_questions',{
+        method: "POST",
+        headers: {"Content-type": "application/json"
+        },
+        body: JSON.stringify({user_id: this.props.user, question_id: questionObj.id, answeredCorrectly: true})
+      })
     }
     else {
-      correct = false
+      fetch('http://localhost:3000/api/v1/user_questions',{
+        method: "POST",
+        headers: {"Content-type": "application/json"
+        },
+        body: JSON.stringify({user_id: this.props.user, question_id: questionObj.id, answeredCorrectly: false})
+      })
     }
-    console.log(UserInput, answer, correct);
-    return correct
-    // POST FETCH
+    console.log(UserInput, answer);
+    // *********
+    // fetch a new question in the same category after
+    // *********
   }
 
   render(){
-
-    console.log(this.state.answer);
 
     return (
       <div className="Questcontainer">

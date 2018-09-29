@@ -9,7 +9,9 @@ class Main extends Component {
   constructor() {
     super()
     this.state={
-      questions: []
+      questions: [],
+      answeredQuestions: [],
+      user_id: 6
     }
   }
 
@@ -17,14 +19,25 @@ class Main extends Component {
     fetch("http://localhost:3000/api/v1/questions")
     .then(res => res.json())
     .then(questions => this.setState({questions}))
-  }      
+
+    fetch(`http://localhost:3000/api/v1/users/${this.state.user_id}`)
+    .then(res => res.json())
+    .then(data => data.user_questions.map(question => question.question_id))
+    .then(answerQuestionsIds => this.setState({answeredQuestions: answerQuestionsIds}))
+  }
+
+  filteredQuestionsForUser = () =>{
+    return this.state.questions.filter(question => !this.state.answeredQuestions.includes(question.id))
+  }
 
   render(){
+    console.log(this.state);
     return(
       <div className="App wrapper">
         <Nav/>
         <Questcontainer
-          questions={this.state.questions}
+          user={this.state.user_id}
+          questions={this.filteredQuestionsForUser()}
           />
         <Piggybank/>
         <Calculator/>
