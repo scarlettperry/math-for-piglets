@@ -34,35 +34,7 @@ class Questcontainer extends Component {
     }
     return questionSent
   }
-
-  handleSubmit = (event,questionObj) => {
-    event.preventDefault()
-    let UserInput = parseInt(event.target[0].value)
-    let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
-
-    if (UserInput===answer) {
-      fetch('http://localhost:3000/api/v1/user_questions',{
-        method: "POST",
-        headers: {"Content-type": "application/json"
-        },
-        body: JSON.stringify({user_id: this.props.user, question_id: questionObj.id, answeredCorrectly: true})
-      })
-    }
-    else {
-      fetch('http://localhost:3000/api/v1/user_questions',{
-        method: "POST",
-        headers: {"Content-type": "application/json"
-        },
-        body: JSON.stringify({user_id: this.props.user, question_id: questionObj.id, answeredCorrectly: false})
-      })
-    }
-    this.props.updateAnsweredQuestionsState(questionObj.id)
-    console.log(UserInput, answer);
-    // *********
-    // fetch a new question in the same category after a state change might render a new question
-    // *********
-  }
-
+  
   render(){
 
     return (
