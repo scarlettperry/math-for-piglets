@@ -1,20 +1,13 @@
 import React, {Component} from 'react'
 import { Label } from 'semantic-ui-react'
+import piggycoins from './images/piggy_coins.jpg'
+import piggydollars from './images/pig_dollars_coins.jpg'
 
 class Piggybank extends Component {
-  // constructor() {
-  //   super()
-  // }
 
-  //set state to be diff pig images?
-
-  render(){
-    return(
-      <div className="Piggybank">
-        {/* todo: render out diff pictures (at least 3 by how much money there is) */}
-        {this.props.piggyTotal > 0 ?
-          <img className="money-pig" src="https://banner2.kisspng.com/20180413/gaq/kisspng-piggy-bank-money-saving-pig-5ad11f05a5ec97.5265925915236544056796.jpg" height="300" width="300"/>
-          :
+  piggyImg = () => {
+    if (this.props.piggyTotal <= 2) {
+      return (
         <div id="face-wrap">
           <div id="face" className=" body">
             <div id="ear-r" className="ear body"></div>
@@ -26,7 +19,30 @@ class Piggybank extends Component {
               <div id="nose-l" className="nose body"></div>
             </div>
           </div>
-        </div>}
+        </div>
+      )
+    }
+    else if (this.props.piggyTotal >= 3 && this.props.piggyTotal < 5) {
+      return (
+        <div className="img-wrapper">
+        <img src={piggycoins} height="200" width="250"/>
+        </div>
+      )
+    }
+    else if (this.props.piggyTotal >= 5) {
+      return (
+        <div className="img-wrapper">
+        <img src={piggydollars} height="175" width="200"/>
+        </div>
+      )
+    }
+  }
+
+  render(){
+    return(
+      <div className="Piggybank">
+        <br/>
+        {this.piggyImg()}
         <br/>
         <Label as='a' size="large" color='green' tag>
             ${this.props.piggyTotal}

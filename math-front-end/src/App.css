@@ -23,20 +23,26 @@
 .Calculator{
   grid-column: 3;
   grid-row: 2/4;
-  border-style: solid;
+  /* border-style: solid; */
 }
 
 .Piggybank{
   grid-column: 3;
   grid-row: 2/4;
   align-self: end;
-  border-style: solid;
+  /* border-style: solid; */
 }
 /* css grid ends here */
 
 .question-equation{
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-size: 80pt;
+}
+
+.img-wrapper {
+  display: inline-block; /* change the default display type to inline-block */
+  overflow: hidden;      /* hide the overflow */
+  transform:scale(1.2);
 }
 
 /* css grid for pig drawing begins here */
