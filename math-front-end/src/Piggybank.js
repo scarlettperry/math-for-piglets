@@ -44,7 +44,7 @@ class Piggybank extends Component {
         <br/>
         {this.piggyImg()}
         <br/>
-        <Label as='a' size="large" color='green' tag>
+        <Label as='a' size="huge" color='green' tag>
             ${this.props.piggyTotal}
           </Label>
       </div>
