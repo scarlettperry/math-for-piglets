@@ -11,11 +11,13 @@ class Main extends Component {
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: 1,
-      piggyTotal: 0
+      user_id: 2,
+      piggyTotal: 0,
+      incorrectQuestionIds: []
     }
   }
 
+  //fetching all questions and user's answered question ids'
   componentDidMount(){
     fetch("http://localhost:3000/api/v1/questions")
     .then(res => res.json())
@@ -27,6 +29,7 @@ class Main extends Component {
     .then(answerQuestionsIds => this.setState({answeredQuestions: answerQuestionsIds}))
   }
 
+  // returning questions the user hasn't answered
   filteredQuestionsForUser = () =>{
     return this.state.questions.filter(question => !this.state.answeredQuestions.includes(question.id))
   }
@@ -35,6 +38,9 @@ class Main extends Component {
     return this.setState({answeredQuestions: [...this.state.answeredQuestions, id]})
   }
 
+  //evaluating input and POSTING T or F
+  //setting state for the piggy total when input is correct
+  //asetting state for incorrect question ids
   handleSubmit = (event,questionObj) => {
     event.preventDefault()
     let UserInput = parseInt(event.target[0].value)
@@ -63,15 +69,18 @@ class Main extends Component {
         },
         body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: false})
       })
+      .then(resp=>resp.json())
+      .then(data=> this.setState({incorrectQuestionIds: [...this.state.incorrectQuestionIds, data.question_id]}))
     }
     this.updateAnsweredQuestions(questionObj.id)
-    // console.log(UserInput, answer);
+    console.log(UserInput, answer);
     // *********
     // fetch a new question in the same category after a state change might render a new question
     // *********
   }
 
   render(){
+    // console.log(this.state.incorrectQuestionIds)
     return(
       <div className="App wrapper">
         <Nav/>
@@ -79,6 +88,7 @@ class Main extends Component {
           user={this.state.user_id}
           questions={this.filteredQuestionsForUser()}
           allQuestions={this.state.questions}
+          incorrectQuestions={this.state.incorrectQuestionIds}
           submit={this.handleSubmit}
           />
         <Piggybank piggyTotal={this.state.piggyTotal}/>

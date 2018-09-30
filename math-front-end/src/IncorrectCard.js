@@ -18,4 +18,8 @@ class IncorrectCard extends Component {
 
 }
 
+// IncorrectCard.defaultProps = {
+//   equation: "Great job! You have no inccorect questions!"
+// }
+
 export default IncorrectCard

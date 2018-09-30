@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Label } from 'semantic-ui-react'
 
 class Piggybank extends Component {
   // constructor() {
@@ -26,7 +27,10 @@ class Piggybank extends Component {
             </div>
           </div>
         </div>}
-        <p>${this.props.piggyTotal}</p>
+        <br/>
+        <Label as='a' size="large" color='green' tag>
+            ${this.props.piggyTotal}
+          </Label>
       </div>
     )
   }

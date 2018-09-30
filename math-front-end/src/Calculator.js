@@ -9,6 +9,11 @@ class Calculator extends Component {
     return(
       <div className="Calculator">
         Hello I'm a Calculator
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        Pay to use me
       </div>
     )
   }

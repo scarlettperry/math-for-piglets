@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+/* css grid begins here */
 .wrapper {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -16,29 +17,34 @@
 .Questcontainer{
   grid-column: 2 / span 1;
   grid-row: 2 / span 2;
+  /* border-style: solid; */
 }
 
 .Calculator{
   grid-column: 3;
   grid-row: 2/4;
+  border-style: solid;
 }
 
 .Piggybank{
-    grid-column: 3;
+  grid-column: 3;
   grid-row: 2/4;
   align-self: end;
+  border-style: solid;
 }
+/* css grid ends here */
 
 .question-equation{
   font-family: "Comic Sans MS", "Comic Sans", cursive;
-  font-size: 70pt;
+  font-size: 80pt;
 }
 
+/* css grid for pig drawing begins here */
 .body {
 }
 
 #face-wrap {
-  margin: 160px auto 0;
+  margin: 20px auto 0;
   width: 160px;
 }
 
@@ -104,6 +110,7 @@
 #nose-r {
   left: +36px;
 }
+/* css grid for pig drawing ends here */
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
