@@ -31,9 +31,6 @@ class Calculator extends Component {
   render(){
     return(
       <div className="Calculator" onClick={this.handleCalculatorInput}>
-        Hello I'm a Calculator beep boop
-        <br/>
-        <br/>
         <label>{this.state.calculatorInput}</label>
         <br/>
         <br/>
