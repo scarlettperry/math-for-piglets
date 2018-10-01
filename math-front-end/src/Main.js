@@ -11,12 +11,12 @@ import {
 } from 'react-router-dom'
 
 class Main extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: 1,
+      user_id: this.props.userID,
       piggyTotal: 0,
       incorrectQuestionIds: [],
       pendingQuestion: []
@@ -55,8 +55,8 @@ class Main extends Component {
   //setting state for incorrect question ids
   handleSubmit = (event,questionObj) => {
     event.preventDefault()
-    let UserInput = parseInt(event.target[0].value)
-    let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
+    let UserInput = parseInt(event.target[0].value, 10)
+    let answer = parseInt(math.eval(questionObj.equation).toFixed(0),10)
 
 
     if (UserInput===answer) {
@@ -86,7 +86,7 @@ class Main extends Component {
       .then(data=> this.setState({incorrectQuestionIds: [...this.state.incorrectQuestionIds, data.question_id]}))
     }
     this.updateAnsweredQuestions(questionObj.id)
-    console.log(UserInput, answer);
+    // console.log(UserInput, answer);
     // *********
     // fetch a new question in the same category after a state change might render a new question
     // *********

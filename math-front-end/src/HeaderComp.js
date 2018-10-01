@@ -2,9 +2,6 @@ import React, {Component} from 'react'
 import { Header } from 'semantic-ui-react'
 
 class HeaderComp extends Component {
-  // constructor() {
-  //   super()
-  // }
 
   render(){
     return(

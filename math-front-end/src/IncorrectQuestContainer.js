@@ -2,9 +2,7 @@ import React, {Component} from 'react'
 import IncorrectCard from './IncorrectCard.js'
 
 class IncorrectQuestContainer extends Component {
-  // constructor() {
-  //   super()
-  // }
+
 
 
   //filters all questions to return just the inccorect questions
