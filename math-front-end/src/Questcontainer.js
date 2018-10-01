@@ -3,15 +3,16 @@ import Questbutton from './Questbutton'
 import Questcard from './Questcard'
 import Createquest from './Createquest'
 import IncorrectQuestContainer from './IncorrectQuestContainer'
-import { Container, Header } from 'semantic-ui-react'
-import * as math from 'mathjs'
+// import { Container, Header } from 'semantic-ui-react'
+// import * as math from 'mathjs'
 
 
 class Questcontainer extends Component {
   constructor() {
     super()
     this.state = {
-      operation: ""
+      operation: "",
+      question: ""
     }
   }
 
@@ -34,7 +35,7 @@ class Questcontainer extends Component {
     }
     return questionSent
   }
-  
+
   render(){
 
     return (

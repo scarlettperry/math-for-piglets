@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import { Dropdown, Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 class Nav extends Component {
-  constructor() {
-    super()
-  }
+
   render(){
     return (
       <div className="Nav">

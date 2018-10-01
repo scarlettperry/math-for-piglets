@@ -1,0 +1,9 @@
+
+.center {
+  display: block;
+    margin-left: auto;
+    margin-right: auto ;
+    position: absolute;
+    border: 3px solid green;
+    text-align: center;
+}

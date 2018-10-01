@@ -11,8 +11,8 @@ class Main extends Component {
     this.state={
       questions: [],
       answeredQuestions: [],
-      user_id: 1,
-      piggyTotal: 0
+      user_id: 10,
+      piggyTotal: 0,
     }
   }
 
@@ -37,8 +37,8 @@ class Main extends Component {
 
   handleSubmit = (event,questionObj) => {
     event.preventDefault()
-    let UserInput = parseInt(event.target[0].value)
-    let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
+    let UserInput = parseInt(event.target[0].value, 10)
+    let answer = parseInt(math.eval(questionObj.equation).toFixed(0),10)
 
     if (UserInput===answer) {
       fetch('http://localhost:3000/api/v1/user_questions',{
@@ -74,7 +74,7 @@ class Main extends Component {
           submit={this.handleSubmit}
           />
         <Piggybank piggyTotal={this.state.piggyTotal}/>
-        <Calculator/>
+        <Calculator />
       </div>
     )
   }
