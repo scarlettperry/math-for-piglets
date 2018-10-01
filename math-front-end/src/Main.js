@@ -58,6 +58,7 @@ class Main extends Component {
     let UserInput = parseInt(event.target[0].value, 10)
     let answer = parseInt(math.eval(questionObj.equation).toFixed(0),10)
 
+    this.setState({pendingQuestion: {}})
 
     if (UserInput===answer) {
       fetch('http://localhost:3000/api/v1/user_questions',{
@@ -87,9 +88,6 @@ class Main extends Component {
     }
     this.updateAnsweredQuestions(questionObj.id)
     // console.log(UserInput, answer);
-    // *********
-    // fetch a new question in the same category after a state change might render a new question
-    // *********
   }
 
   handleClick = (questionObj) => {
@@ -98,7 +96,7 @@ class Main extends Component {
   }
 
   render(){
-    // console.log(this.state)
+    console.log(this.state.pendingQuestion)
     return(
       <Router>
         <React.Fragment>

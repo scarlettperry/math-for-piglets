@@ -9,11 +9,10 @@ import IncorrectQuestContainer from './IncorrectQuestContainer'
 
 
 class Questcontainer extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.state = {
-      operation: "",
-      pendingQuestion: props.pendingQuestion
+      operation: ""
     }
   }
 
@@ -24,18 +23,18 @@ class Questcontainer extends Component {
     })
   }
 
-  handlePendingQuestion = () => {
-    this.setState({pendingQuestion: {}})
-  }
+  // handlePendingQuestion = () => {
+  //   // event.preventDefault()
+  //   this.setState({pendingQuestion: {}})
+  // }
 
   //shows a question based on
   //this.state.pendingQuestion OR
   //this.state.operation
   filterQuestion = () => {
     let questionSent
-    if (Object.keys(this.state.pendingQuestion).length !== 0) {
-      questionSent = this.state.pendingQuestion
-      // this.setState({pendingQuestion: {}})
+    if (Object.keys(this.props.pendingQuestion).length !== 0) {
+      questionSent = this.props.pendingQuestion
     }
     else if(this.state.operation === "") {
       let num = Math.floor(Math.random()* this.props.questions.length)
@@ -50,7 +49,7 @@ class Questcontainer extends Component {
   }
 
   render(){
-    // console.log(this.state)
+    // console.log(this.state.pendingQuestion)
     return (
       <div className="Questcontainer">
         <Questbutton click={this.handleClick}/>

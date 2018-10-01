@@ -10,7 +10,6 @@ class Input extends Component {
         {/* MAKE USER FRIENDLY <h3>{"round questions up .5 or above, else round down."}</h3> */}
         <form
           onSubmit={(event)=>{this.props.submit(event, this.props.question)}}
-          onSubmit={this.props.handlePendingQuestion}
           >
           <div className='ui huge icon input'>
             <input type='text' size="10"/>
