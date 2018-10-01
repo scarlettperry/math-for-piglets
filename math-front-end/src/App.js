@@ -7,23 +7,51 @@ import Login from './Login'
 class App extends Component {
 
   state ={
-    loggedIn: false
+    loggedIn: false,
+    users: [],
+    user_id: 0
   }
 
-  handleLogin = () =>{
-    this.setState({loggedIn: true})
+  componentDidMount(){
+    fetch("http://localhost:3000/api/v1/users")
+    .then(res => res.json())
+    .then(data => this.setState({users: data.map(data => [data.id, data.name.toLowerCase()])}))
+  }
+
+  handleLoginButton = (event) =>{
+    let nameInput = event.target.parentNode.parentNode[0].value
+
+    this.state.users.forEach(user => {if(user.includes(nameInput)){
+      return this.setState({loggedIn: true, user_id: user[0]})
+    }})
+
+    console.log(event.target.parentNode.parentNode[1].value, "password")
+  }
+
+  handleCreateAccount = (event) =>{
+    let nameInput = event.target.parentNode.parentNode[0].value
+    if(!this.state.loggedIn){
+      fetch("http://localhost:3000/api/v1/users",{
+        method: "POST",
+        headers: {"Content-type": "application/json"
+        },
+        body: JSON.stringify({name: nameInput})
+      }).then(res => res.json())
+      .then(data => this.setState({loggedIn: true, user_id: data.id}))
+    }
   }
 
   render() {
+    // console.log(this.state, "app users");
     return (
       <div>
         {this.state.loggedIn ?
         <Fragment>
         <HeaderComp />
-        <Main />
+        <Main userID={this.state.user_id}/>
         </Fragment>
           :
-           <Login handleLogin={this.handleLogin}/>}
+           <Login loginButton={this.handleLoginButton} createAccountButton={this.handleCreateAccount}/>}
       </div>
     );
   }

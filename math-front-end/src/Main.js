@@ -6,12 +6,12 @@ import Calculator from './Calculator'
 import * as math from 'mathjs'
 
 class Main extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state={
       questions: [],
       answeredQuestions: [],
-      user_id: 10,
+      user_id: this.props.userID,
       piggyTotal: 0,
     }
   }
@@ -57,14 +57,14 @@ class Main extends Component {
       })
     }
     this.updateAnsweredQuestions(questionObj.id)
-    console.log(UserInput, answer);
+    // console.log(UserInput, answer);
     // *********
     // fetch a new question in the same category after a state change might render a new question
     // *********
   }
 
   render(){
-    console.log(this.state.answeredQuestions);
+    // console.log(this.state.answeredQuestions);
     return(
       <div className="App wrapper">
         <Nav/>

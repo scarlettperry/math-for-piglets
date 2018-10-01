@@ -15,13 +15,11 @@ class Calculator extends Component {
     if(!specialEvent.includes(receivedInput)){
     this.setState(prevState => ({calculatorInput: prevState.calculatorInput + receivedInput}))
     }else if (receivedInput==="enter") {
-
-      try {
-      this.setState({calculatorInput: math.eval(this.state.calculatorInput).toString()})
-      } catch (error) {
-      this.setState({error: error, calculatorInput: "error" });
-      }
-
+        try {
+        this.setState({calculatorInput: math.eval(this.state.calculatorInput).toString()})
+        } catch (error) {
+        this.setState({error: error, calculatorInput: "error" });
+        }
       }
     else if (receivedInput ==="delete") {
       this.setState({calculatorInput: this.state.calculatorInput.slice(0,-1)})

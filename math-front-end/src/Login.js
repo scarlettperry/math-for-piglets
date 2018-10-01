@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import './Login.css'
 export default class Login extends Component{
 
-
   render(){
 
     return(
@@ -11,7 +10,7 @@ export default class Login extends Component{
       <div className="center ui card ">
         <div className="content">
           <h3 className ="header">Please Login</h3>
-          <form onSubmit={this.props.handleLogin}>
+          <form >
           <label>User name: </label>
             <input type="text"  /><br/>
             <br/>
@@ -19,10 +18,9 @@ export default class Login extends Component{
           <label> Password: </label>
             <input type="text" /> <br/>
             <br/>
-            <input type="submit"/>
             <div className="ui two buttons">
-              <div className="ui basic green button">Login</div>
-              <div className="ui basic red button">Create New Account</div>
+              <div className="ui basic green button" onClick={(event)=>{this.props.loginButton(event)}}>Login</div>
+              <div className="ui basic red button" onClick={(event)=>{this.props.createAccountButton(event)}}>Create New Account</div>
             </div>
           </form>
         </div>
