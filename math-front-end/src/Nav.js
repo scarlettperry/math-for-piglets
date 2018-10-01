@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
-import { Dropdown, Menu } from 'semantic-ui-react'
+// import { Dropdown, Menu } from 'semantic-ui-react'
+import { NavLink } from 'react-router-dom';
 
 class Nav extends Component {
   constructor() {
@@ -8,11 +9,10 @@ class Nav extends Component {
   render(){
     return (
       <div className="Nav">
-        <Menu vertical>
-         <Menu.Item>Create a Question</Menu.Item>
-         <Menu.Item>Incorrect Questions</Menu.Item>
-         <Menu.Item>Piggybank Collection</Menu.Item>
-       </Menu>
+        <div className='ui vertical menu'>
+          <NavLink className="item" to="/" exact>Home</NavLink>
+          <NavLink className="item" to="/incorrect-questions">Incorrect Questions</NavLink>
+        </div>
       </div>
     )
   }

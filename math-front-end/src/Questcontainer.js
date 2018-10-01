@@ -4,6 +4,10 @@ import Questcard from './Questcard'
 import Createquest from './Createquest'
 import IncorrectQuestContainer from './IncorrectQuestContainer'
 import * as math from 'mathjs'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 
 
 class Questcontainer extends Component {
@@ -39,18 +43,27 @@ class Questcontainer extends Component {
   render(){
     console.log(this.props);
     return (
-      <div className="Questcontainer">
-        <Questbutton click={this.handleClick}/>
-        <Questcard
-          question={this.filterQuestion()}
-          submit={this.props.submit}/>
-        <Createquest />
-        <IncorrectQuestContainer
-          user={this.props.user}
-          allQuestions={this.props.allQuestions}
-          incorrectQuestions={this.props.incorrectQuestions}
-        />
-      </div>
+      <Router>
+        <React.Fragment>
+          <div className="Questcontainer">
+            <Questbutton click={this.handleClick}/>
+            <Questcard
+              question={this.filterQuestion()}
+              submit={this.props.submit}/>
+            <Createquest />
+            <Route path="/incorrect-questions"
+              render={
+                routerProps =>
+                <IncorrectQuestContainer
+                  {...routerProps}
+                  user={this.props.user}
+                  allQuestions={this.props.allQuestions}
+                  incorrectQuestions={this.props.incorrectQuestions}
+                />
+              }/>
+          </div>
+        </React.Fragment>
+      </Router>
     )
   }
 

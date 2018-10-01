@@ -4,6 +4,10 @@ import Questcontainer from './Questcontainer.js'
 import Piggybank from './Piggybank'
 import Calculator from './Calculator'
 import * as math from 'mathjs'
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom'
 
 class Main extends Component {
   constructor() {
@@ -82,18 +86,26 @@ class Main extends Component {
   render(){
     // console.log(this.state.incorrectQuestionIds)
     return(
-      <div className="App wrapper">
-        <Nav/>
-        <Questcontainer
-          user={this.state.user_id}
-          questions={this.filteredQuestionsForUser()}
-          allQuestions={this.state.questions}
-          incorrectQuestions={this.state.incorrectQuestionIds}
-          submit={this.handleSubmit}
-          />
-        <Piggybank piggyTotal={this.state.piggyTotal}/>
-        <Calculator/>
-      </div>
+      <Router>
+        <React.Fragment>
+          <div className="App wrapper">
+            <Nav/>
+            <Route exact path="/" render={
+              routerProps =>
+              <Questcontainer
+                {...routerProps}
+                user={this.state.user_id}
+                questions={this.filteredQuestionsForUser()}
+                allQuestions={this.state.questions}
+                incorrectQuestions={this.state.incorrectQuestionIds}
+                submit={this.handleSubmit}
+              />
+            }/>
+            <Piggybank piggyTotal={this.state.piggyTotal}/>
+            <Calculator/>
+          </div>
+        </React.Fragment>
+      </Router>
     )
   }
 
