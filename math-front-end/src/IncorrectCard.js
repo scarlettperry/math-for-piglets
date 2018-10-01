@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { Link } from 'react-router-dom'
 
 class IncorrectCard extends Component {
   // constructor() {
@@ -9,17 +10,17 @@ class IncorrectCard extends Component {
     // console.log(this.props);
 
     return (
-      <div>
-        {this.props.question.equation}<br/>
-        <button>Try Again</button><br/>
+      <div className="IncorrectCard">
+        <p className="incorrectQuestion">{this.props.question.equation}</p>
+        <Link to="/" exact>
+          <button onClick={()=>this.props.handleClick(this.props.question)}>Try Again</button>
+        </Link>
       </div>
+
+
     )
   }
 
 }
-
-// IncorrectCard.defaultProps = {
-//   equation: "Great job! You have no inccorect questions!"
-// }
 
 export default IncorrectCard

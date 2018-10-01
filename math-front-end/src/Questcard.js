@@ -15,6 +15,7 @@ class Questcard extends Component {
         <Input
           question={this.props.question}
           submit={this.props.submit}
+          handlePendingQuestion={this.props.handlePendingQuestion}
           />
       </div>
     )

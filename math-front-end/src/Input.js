@@ -1,6 +1,4 @@
 import React, {Component} from 'react'
-import { Button } from 'semantic-ui-react'
-import { Label } from 'semantic-ui-react'
 
 class Input extends Component {
   // constructor() {
@@ -13,7 +11,10 @@ class Input extends Component {
         <br/>
         <br/>
         {/* MAKE USER FRIENDLY <h3>{"round questions up .5 or above, else round down."}</h3> */}
-        <form onSubmit={(event)=>{this.props.submit(event, this.props.question)}}>
+        <form
+          onSubmit={(event)=>{this.props.submit(event, this.props.question)}}
+          onSubmit={this.props.handlePendingQuestion}
+          >
           <div className='ui huge icon input'>
             <input type='text' size="10"/>
             <i aria-hidden='true'/>

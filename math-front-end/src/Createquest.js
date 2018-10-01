@@ -8,7 +8,7 @@ class Createquest extends Component {
   render(){
     return(
       <div>
-        Hi from Createquest
+        
       </div>
     )
   }

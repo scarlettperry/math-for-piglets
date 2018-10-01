@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Nav from './Nav.js'
 import Questcontainer from './Questcontainer.js'
+import IncorrectQuestContainer from './IncorrectQuestContainer'
 import Piggybank from './Piggybank'
 import Calculator from './Calculator'
 import * as math from 'mathjs'
@@ -15,13 +16,14 @@ class Main extends Component {
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: 2,
+      user_id: 1,
       piggyTotal: 0,
-      incorrectQuestionIds: []
+      incorrectQuestionIds: [],
+      pendingQuestion: []
     }
   }
 
-  //fetching all questions and user's answered question ids'
+  //fetching all questions, user's answered question ids', and user's incorrect question ids
   componentDidMount(){
     fetch("http://localhost:3000/api/v1/questions")
     .then(res => res.json())
@@ -31,6 +33,12 @@ class Main extends Component {
     .then(res => res.json())
     .then(data => data.user_questions.map(question => question.question_id))
     .then(answerQuestionsIds => this.setState({answeredQuestions: answerQuestionsIds}))
+
+    fetch(`http://localhost:3000/api/v1/users/${this.state.user_id}`)
+      .then(resp => resp.json())
+      .then(data => data.user_questions.filter(question=> question.answeredCorrectly === false))
+      .then(data => data.map(question => question.question_id))
+      .then(id => this.setState({incorrectQuestionIds: id}))
   }
 
   // returning questions the user hasn't answered
@@ -44,11 +52,12 @@ class Main extends Component {
 
   //evaluating input and POSTING T or F
   //setting state for the piggy total when input is correct
-  //asetting state for incorrect question ids
+  //setting state for incorrect question ids
   handleSubmit = (event,questionObj) => {
     event.preventDefault()
     let UserInput = parseInt(event.target[0].value)
     let answer = parseInt(math.eval(questionObj.equation).toFixed(0))
+
 
     if (UserInput===answer) {
       fetch('http://localhost:3000/api/v1/user_questions',{
@@ -63,7 +72,7 @@ class Main extends Component {
       })
 
       // *********
-      // fetch to post new Piggy total
+      // fetch to post new Piggy total?
       // *********
     }
     else {
@@ -83,8 +92,13 @@ class Main extends Component {
     // *********
   }
 
+  handleClick = (questionObj) => {
+    // console.log(questionObj);
+    this.setState({pendingQuestion: questionObj})
+  }
+
   render(){
-    // console.log(this.state.incorrectQuestionIds)
+    // console.log(this.state)
     return(
       <Router>
         <React.Fragment>
@@ -96,9 +110,18 @@ class Main extends Component {
                 {...routerProps}
                 user={this.state.user_id}
                 questions={this.filteredQuestionsForUser()}
+                submit={this.handleSubmit}
+                pendingQuestion={this.state.pendingQuestion}
+              />
+            }/>
+            <Route path="/incorrect-questions/" render={
+              routerProps =>
+              <IncorrectQuestContainer
+                {...routerProps}
+                user={this.state.user}
                 allQuestions={this.state.questions}
                 incorrectQuestions={this.state.incorrectQuestionIds}
-                submit={this.handleSubmit}
+                handleClick={this.handleClick}
               />
             }/>
             <Piggybank piggyTotal={this.state.piggyTotal}/>

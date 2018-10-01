@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { Label } from 'semantic-ui-react'
 import piggycoins from './images/piggy_coins.jpg'
 import piggydollars from './images/pig_dollars_coins.jpg'
+import porco from './images/porco.png'
+import hog from './images/master-hog.png'
 
 class Piggybank extends Component {
 
@@ -29,10 +31,22 @@ class Piggybank extends Component {
         </div>
       )
     }
-    else if (this.props.piggyTotal >= 5) {
+    else if (this.props.piggyTotal >= 5 && this.props.piggyTotal < 8) {
       return (
         <div className="img-wrapper">
         <img src={piggydollars} height="175" width="200"/>
+        </div>
+      )
+    }
+    else if (this.props.piggyTotal >= 8 && this.props.piggyTotal < 12) {
+      return (
+        <img className="TwirlyPig" src={porco}/>
+      )
+    }
+    else if (this.props.piggyTotal >= 12) {
+      return (
+        <div className="masters-domicile">
+          <img className="master-blaster" src={hog}/>
         </div>
       )
     }

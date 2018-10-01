@@ -2,39 +2,10 @@ import React, {Component} from 'react'
 import IncorrectCard from './IncorrectCard.js'
 
 class IncorrectQuestContainer extends Component {
-  constructor() {
-    super()
-    // this.state = {
-    //   userQuestions: []
-    // }
-  }
-
-  // componentDidMount(){
-  //   fetch(`http://localhost:3000/api/v1/users/${this.props.user}`)
-  //     .then(resp => resp.json())
-  //     .then(questions => this.setState({userQuestions: questions.user_questions}))
+  // constructor() {
+  //   super()
   // }
 
-  // incorrectQuestions = () => {
-  //   let question
-  //   if (this.state.userQuestions !== null) {
-  //     question = this.state.userQuestions.filter(obj => obj.answeredCorrectly === false)
-  //
-  //   }
-  //   return question
-  // }
-
-  // incorrectQuestionsIds = () => {
-  //   let question = this.incorrectQuestions()
-  //   let questionIds = question.map(question => question.question_id)
-  //   return questionIds
-  // }
-
-  // questions = () => {
-  //   let incorrectQIds = this.incorrectQuestionsIds()
-  //   let questions = this.props.allQuestions.filter(question => incorrectQIds.includes(question.id))
-  //   return questions
-  // }
 
   //filters all questions to return just the inccorect questions
   allIncorrectQuestions = () => {
@@ -44,13 +15,13 @@ class IncorrectQuestContainer extends Component {
   //returns a component with a single question object as a prop
   singleIncorrectQuestion = () => {
     let questions = this.allIncorrectQuestions()
-    return questions.map(question => <IncorrectCard question={question} />)
+    return questions.map(question => <IncorrectCard question={question} handleClick={this.props.handleClick}/>)
   }
 
   render(){
     console.log(this.props);
     return(
-      <div>
+      <div className="IncorrectQuestContainer flex-container">
         {this.singleIncorrectQuestion()}
       </div>
     )

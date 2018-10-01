@@ -2,19 +2,16 @@ import React, {Component} from 'react'
 import Questbutton from './Questbutton'
 import Questcard from './Questcard'
 import Createquest from './Createquest'
-import IncorrectQuestContainer from './IncorrectQuestContainer'
 import * as math from 'mathjs'
-import {
-  BrowserRouter as Router,
-  Route
-} from 'react-router-dom'
+
 
 
 class Questcontainer extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
-      operation: ""
+      operation: "",
+      pendingQuestion: props.pendingQuestion
     }
   }
 
@@ -25,10 +22,20 @@ class Questcontainer extends Component {
     })
   }
 
-  //shows a question based on this.state.operation
+  handlePendingQuestion = () => {
+    this.setState({pendingQuestion: {}})
+  }
+
+  //shows a question based on
+  //this.state.pendingQuestion OR
+  //this.state.operation
   filterQuestion = () => {
     let questionSent
-    if (this.state.operation === "") {
+    if (Object.keys(this.state.pendingQuestion).length !== 0) {
+      questionSent = this.state.pendingQuestion
+      // this.setState({pendingQuestion: {}})
+    }
+    else if(this.state.operation === "") {
       let num = Math.floor(Math.random()* this.props.questions.length)
       questionSent = this.props.questions[num]
     }
@@ -41,29 +48,17 @@ class Questcontainer extends Component {
   }
 
   render(){
-    console.log(this.props);
+    // console.log(this.state)
     return (
-      <Router>
-        <React.Fragment>
-          <div className="Questcontainer">
-            <Questbutton click={this.handleClick}/>
-            <Questcard
-              question={this.filterQuestion()}
-              submit={this.props.submit}/>
-            <Createquest />
-            <Route path="/incorrect-questions"
-              render={
-                routerProps =>
-                <IncorrectQuestContainer
-                  {...routerProps}
-                  user={this.props.user}
-                  allQuestions={this.props.allQuestions}
-                  incorrectQuestions={this.props.incorrectQuestions}
-                />
-              }/>
-          </div>
-        </React.Fragment>
-      </Router>
+      <div className="Questcontainer">
+        <Questbutton click={this.handleClick}/>
+        <Questcard
+          question={this.filterQuestion()}
+          submit={this.props.submit}
+          handlePendingQuestion={this.handlePendingQuestion}
+        />
+        <Createquest />
+      </div>
     )
   }
 
