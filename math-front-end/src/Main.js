@@ -16,7 +16,7 @@ class Main extends Component {
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: this.props.userID,
+      user_id: 39,
       piggyTotal: 0,
       incorrectQuestionIds: [],
       pendingQuestion: []
@@ -87,12 +87,16 @@ class Main extends Component {
       .then(data=> this.setState({incorrectQuestionIds: [...this.state.incorrectQuestionIds, data.question_id]}))
     }
     this.updateAnsweredQuestions(questionObj.id)
-    // console.log(UserInput, answer);
+
   }
 
   handleClick = (questionObj) => {
     // console.log(questionObj);
     this.setState({pendingQuestion: questionObj})
+  }
+
+  piggyTotalChange = () =>{
+    this.setState(prevState=> ({piggyTotal: prevState.piggyTotal -1}) )
   }
 
   render(){
@@ -123,7 +127,7 @@ class Main extends Component {
               />
             }/>
             <Piggybank piggyTotal={this.state.piggyTotal}/>
-            <Calculator/>
+            <Calculator piggyTotal={this.state.piggyTotal} handlePiggyTotalChange={this.piggyTotalChange}/>
           </div>
         </React.Fragment>
       </Router>
