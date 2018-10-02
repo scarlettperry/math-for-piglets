@@ -41,17 +41,18 @@ margin-left: 10%;
   margin: 10px;
   padding: 10px;
   /* text-align: center; */
+
 }
 
 .Calculator{
   grid-column: 3;
-  grid-row: 2/4;
+  grid-row: 2/3;
   /* border-style: solid; */
 }
 
 .Piggybank{
   grid-column: 3;
-  grid-row: 2/4;
+  grid-row: 3/4;
   align-self: end;
   /* border-style: solid; */
 }
@@ -65,6 +66,12 @@ margin-left: 10%;
 .incorrectQuestion{
     font-family: "Comic Sans MS", "Comic Sans", cursive;
     font-size: 40pt;
+}
+
+.is-correct{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 20pt;
+  color: rgb(24, 145, 145)
 }
 
 .img-wrapper {

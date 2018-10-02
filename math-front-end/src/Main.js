@@ -17,7 +17,7 @@ class Main extends Component {
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: 39,
+      user_id: 1,
       piggyTotal: 0,
       incorrectQuestionIds: [],
       pendingQuestion: [],

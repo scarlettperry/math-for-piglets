@@ -7,12 +7,12 @@ class Input extends Component {
   isCorrect = () => {
    if(this.props.isCorrect === true){
      return (
-       <p>Correct answer, great job!</p>
+       <p className="is-correct">Correct answer, great job!</p>
      )
    }
    else if (this.props.isCorrect === false) {
      return (
-       <p>Incorrect answer but we can always try again!</p>
+       <p className="is-correct">Incorrect answer but we can always try again!</p>
      )
    }
    else {
@@ -22,8 +22,11 @@ class Input extends Component {
 
   alert = () => {
    this.myRef = React.createRef();
-   while(this.props.isCorrect === true){
+   console.log(this.props);
+   if(this.props.isCorrect === true){
      return (
+       // const sound = new Audio('./sound/ca_ching.mp3')
+       // sound.play()
        <audio ref={this.myRef} src={caChing} autoPlay/>
      )
    }

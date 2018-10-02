@@ -55,7 +55,6 @@ class Piggybank extends Component {
   render(){
     return(
       <div className="Piggybank">
-        <br/>
         {this.piggyImg()}
         <br/>
         <Label as='a' size="huge" color='green' tag>

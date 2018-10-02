@@ -8,9 +8,9 @@ class IncorrectCard extends Component {
 
     return (
       <div className="IncorrectCard">
-        <p className="incorrectQuestion">{this.props.question.equation}</p>
+        <span className="incorrectQuestion">{this.props.question.equation}</span><br/>
         <Link to="/" exact>
-          <button onClick={()=>this.props.handleClick(this.props.question)}>Try Again</button>
+          <button className="ui teal button" onClick={()=>this.props.handleClick(this.props.question)}>Try Again</button>
         </Link>
       </div>
 
