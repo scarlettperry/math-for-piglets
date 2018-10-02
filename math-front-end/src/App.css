@@ -88,6 +88,43 @@ margin-left: 10%;
   animation: Teeter-Totter 10s infinite ease-in-out;
 }
 
+/* i {
+  color: blue;
+  margin-left: 20px;
+} */
+
+.arrow1 {
+  animation: slide1 1s ease-in-out infinite;
+  margin-left: 9px;
+}
+
+@keyframes slide1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 0);
+  }
+}
+
+.arrow2{
+  animation: slide1 1s ease-in-out infinite;
+  margin-left: 9px;
+}
+
+@keyframes slide1 {
+  100%,
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(10px, 0);
+  }
+}
+
 /* css grid for pig drawing begins here */
 .body {
 }

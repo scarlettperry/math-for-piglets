@@ -57,6 +57,7 @@ class Questcontainer extends Component {
           question={this.filterQuestion()}
           submit={this.props.submit}
           handlePendingQuestion={this.handlePendingQuestion}
+          isCorrect={this.props.isCorrect}
         />
         <Createquest />
       </div>

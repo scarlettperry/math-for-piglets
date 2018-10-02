@@ -5,6 +5,7 @@ import IncorrectQuestContainer from './IncorrectQuestContainer'
 import Piggybank from './Piggybank'
 import Calculator from './Calculator'
 import * as math from 'mathjs'
+import caChing from './sound/ca_ching.mp3'
 import {
   BrowserRouter as Router,
   Route
@@ -19,7 +20,8 @@ class Main extends Component {
       user_id: this.props.userID,
       piggyTotal: 0,
       incorrectQuestionIds: [],
-      pendingQuestion: []
+      pendingQuestion: [],
+      isCorrect: ""
     }
   }
 
@@ -50,6 +52,12 @@ class Main extends Component {
     return this.setState({answeredQuestions: [...this.state.answeredQuestions, id]})
   }
 
+  // playSound=() => {
+  //   this.myRef = React.createRef()
+  //   return (
+  //     <audio ref={this.myRef} src={caChing} autoPlay/>
+  //   )
+  // }
   //evaluating input and POSTING T or F
   //setting state for the piggy total when input is correct
   //setting state for incorrect question ids
@@ -68,9 +76,14 @@ class Main extends Component {
         body: JSON.stringify({user_id: this.state.user_id, question_id: questionObj.id, answeredCorrectly: true})
       })
 
+      this.setState({isCorrect: true})
+
       this.setState((prevState)=>{
         return {piggyTotal: prevState.piggyTotal + 2}
       })
+
+      // this.playSound
+
 
       // *********
       // fetch to post new Piggy total?
@@ -85,6 +98,9 @@ class Main extends Component {
       })
       .then(resp=>resp.json())
       .then(data=> this.setState({incorrectQuestionIds: [...this.state.incorrectQuestionIds, data.question_id]}))
+
+      this.setState({isCorrect: false})
+
     }
     this.updateAnsweredQuestions(questionObj.id)
     // console.log(UserInput, answer);
@@ -96,7 +112,7 @@ class Main extends Component {
   }
 
   render(){
-    console.log(this.state.pendingQuestion)
+    // console.log(this.state.isCorrect)
     return(
       <Router>
         <React.Fragment>
@@ -110,6 +126,7 @@ class Main extends Component {
                 questions={this.filteredQuestionsForUser()}
                 submit={this.handleSubmit}
                 pendingQuestion={this.state.pendingQuestion}
+                isCorrect={this.state.isCorrect}
               />
             }/>
             <Route path="/incorrect-questions/" render={
