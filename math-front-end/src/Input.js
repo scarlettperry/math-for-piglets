@@ -4,6 +4,10 @@ import caChing from './sound/ca_ching.mp3'
 
 class Input extends Component {
 
+  state={
+    answer:""
+  }
+
   isCorrect = () => {
    if(this.props.isCorrect === true){
      return (
@@ -32,8 +36,17 @@ class Input extends Component {
    }
   }
 
+  handleOnChange = (event) =>{
+    this.setState({answer: event.target.value})
+  }
+
+  resetAnswer = () =>{
+    this.setState({answer: ""})
+  }
+
+
   render(){
-    console.log(this.props);
+    console.log(this.state);
     return(
       <div>
         {this.alert()}
@@ -42,10 +55,10 @@ class Input extends Component {
         {/* MAKE USER FRIENDLY <h3>{"round questions up .5 or above, else round down."}</h3> */}
         {this.isCorrect()}
         <form
-          onSubmit={(event)=>{this.props.submit(event, this.props.question)}}
+          onSubmit={(event)=>{this.props.submit(event, this.state.answer, this.props.question,this.resetAnswer)}}
           >
           <div className='ui huge icon input'>
-            <input type='text' size="10"/>
+            <input type='text' size="10" value={this.state.answer} onChange={(event) => {this.handleOnChange(event)}}/>
             <i aria-hidden='true'/>
           </div>
           <span> </span><input className="ui olive button big" type="submit"/><br/>
