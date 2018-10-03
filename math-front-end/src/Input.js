@@ -7,12 +7,12 @@ class Input extends Component {
   isCorrect = () => {
    if(this.props.isCorrect === true){
      return (
-       <p className="is-correct">Correct answer, great job!</p>
+       <p className="is-correct fade">Correct answer, great job!</p>
      )
    }
    else if (this.props.isCorrect === false) {
      return (
-       <p className="is-correct">Incorrect answer but we can always try again!</p>
+       <p className="is-correct fade2">Incorrect answer but we can always try again!</p>
      )
    }
    else {

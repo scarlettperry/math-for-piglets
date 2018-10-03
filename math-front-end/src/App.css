@@ -138,6 +138,25 @@ margin-left: 10%;
   }
 }
 
+.fade{
+  animation: FadeAnimation 3s ease-in .2s forwards;
+}
+
+.fade2{
+  animation: FadeAnimation 3s ease-in .2s forwards;
+}
+
+@keyframes FadeAnimation {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 /* css grid for pig drawing begins here */
 .body {
 }
