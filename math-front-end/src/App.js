@@ -7,9 +7,9 @@ import Login from './Login'
 class App extends Component {
 
   state ={
-    loggedIn: true,
+    loggedIn: false,
     users: [],
-    user_id: 1
+    user_id: 0
   }
 
   componentDidMount(){
