@@ -17,7 +17,7 @@ class Main extends Component {
     this.state = {
       questions: [],
       answeredQuestions: [],
-      user_id: 1,
+      user_id: 3,
       piggyTotal: 0,
       incorrectQuestionIds: [],
       pendingQuestion: [],
@@ -61,9 +61,9 @@ class Main extends Component {
   //evaluating input and POSTING T or F
   //setting state for the piggy total when input is correct
   //setting state for incorrect question ids
-  handleSubmit = (event,questionObj) => {
+  handleSubmit = (event, answer_input,questionObj, resetAnswer) => {
     event.preventDefault()
-    let UserInput = parseInt(event.target[0].value, 10)
+    let UserInput = parseInt(answer_input, 10)
     let answer = parseInt(math.eval(questionObj.equation).toFixed(0),10)
 
     this.setState({pendingQuestion: {}})
@@ -77,7 +77,7 @@ class Main extends Component {
       })
 
       this.setState({isCorrect: true})
-
+      resetAnswer()
       this.setState((prevState)=>{
         return {piggyTotal: prevState.piggyTotal + 2}
       })
