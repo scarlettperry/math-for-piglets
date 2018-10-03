@@ -6,7 +6,7 @@ class Questbutton extends Component {
   render(){
     return(
       <div>
-        <i class="huge blue long arrow alternate right icon arrow1"></i><span>Chose a different operation or solve the question on the screen</span><i class="huge blue long arrow alternate left icon arrow2"></i>
+        <i class="huge blue long arrow alternate right icon arrow1"></i><span className="button-directions">Chose a different operation or solve the question on the screen</span><i class="huge blue long arrow alternate left icon arrow2"></i>
         <div onClick={this.props.click}>
           <Button name="addition" size='massive' color='teal'>+</Button>
           <Button name="subtraction" size='massive' color='teal'>-</Button>

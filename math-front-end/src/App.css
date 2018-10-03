@@ -68,6 +68,12 @@ margin-left: 10%;
     font-size: 40pt;
 }
 
+.button-directions{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+  font-size: 10pt;
+  color: blue;
+}
+
 .is-correct{
   font-family: "Comic Sans MS", "Comic Sans", cursive;
   font-size: 20pt;
