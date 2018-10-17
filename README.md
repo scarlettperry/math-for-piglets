@@ -20,7 +20,7 @@
 - Math.js library
 
 ## Back-End Repository
-https://github.com/bryanteng/mod_4_project
+https://github.com/bryanteng/math_for_piglets_backend
 
 ## Server-Side Install Instructions
 1. Run `bundle install`
