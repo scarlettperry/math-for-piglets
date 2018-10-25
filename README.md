@@ -24,9 +24,10 @@ https://github.com/bryanteng/math_for_piglets_backend
 
 ## Server-Side Install Instructions
 1. Run `bundle install`
-2. Run `rake db:migrate`
-3. Run `rake db:seed`
-4. Run `rails s`
+2. Run `rake db:create`
+3. Run `rake db:migrate`
+4. Run `rake db:seed`
+5. Run `rails s -p 3000`
 
 ## Client-Side Install Instructions
 1. Run `npm install`
