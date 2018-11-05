@@ -2,6 +2,8 @@
 
 *Math for Piglets*, a math-learning application with a built-in reward system, directed towards children.
 
+![Screenshot](readmeImg.png)
+
 ## Application Features
 - User can choose a math operation and solve the given question.
 
