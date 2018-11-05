@@ -8,7 +8,7 @@ export default class Login extends Component{
 
     return(
   <div className="login">
-     <Header as='h2' icon='pencil' content='DO MATH WITH SCARLETT' />
+     <Header as='h2' icon='pencil' content='Math for Piglets' />
     <div className="center">
       <div className="center ui card ">
         <div className="content">
