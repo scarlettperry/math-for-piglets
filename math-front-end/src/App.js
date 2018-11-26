@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch("http://localhost:3000/api/v1/users")
+    fetch("https://math-for-piglets-backend.herokuapp.com/api/v1/users")
     .then(res => res.json())
     .then(data => this.setState({users: data.map(data => [data.id, data.name.toLowerCase()])}))
   }

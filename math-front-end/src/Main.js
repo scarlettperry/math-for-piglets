@@ -27,16 +27,16 @@ class Main extends Component {
 
   //fetching all questions, user's answered question ids', and user's incorrect question ids
   componentDidMount(){
-    fetch("http://localhost:3000/api/v1/questions")
+    fetch("https://math-for-piglets-backend.herokuapp.com/api/v1/questions")
     .then(res => res.json())
     .then(questions => this.setState({questions}))
 
-    fetch(`http://localhost:3000/api/v1/users/${this.state.user_id}`)
+    fetch(`https://math-for-piglets-backend.herokuapp.com/api/v1/users/${this.state.user_id}`)
     .then(res => res.json())
     .then(data => data.user_questions.map(question => question.question_id))
     .then(answerQuestionsIds => this.setState({answeredQuestions: answerQuestionsIds}))
 
-    fetch(`http://localhost:3000/api/v1/users/${this.state.user_id}`)
+    fetch(`https://math-for-piglets-backend.herokuapp.com/api/v1/users/${this.state.user_id}`)
       .then(resp => resp.json())
       .then(data => data.user_questions.filter(question=> question.answeredCorrectly === false))
       .then(data => data.map(question => question.question_id))
@@ -69,7 +69,7 @@ class Main extends Component {
     this.setState({pendingQuestion: {}})
 
     if (UserInput===answer) {
-      fetch('http://localhost:3000/api/v1/user_questions',{
+      fetch('https://math-for-piglets-backend.herokuapp.com/api/v1/user_questions',{
         method: "POST",
         headers: {"Content-type": "application/json"
         },
@@ -90,7 +90,7 @@ class Main extends Component {
       // *********
     }
     else {
-      fetch('http://localhost:3000/api/v1/user_questions',{
+      fetch('https://math-for-piglets-backend.herokuapp.com/api/v1/user_questions',{
         method: "POST",
         headers: {"Content-type": "application/json"
         },
