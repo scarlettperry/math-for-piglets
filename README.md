@@ -35,8 +35,9 @@ https://github.com/bryanteng/math_for_piglets_backend
 5. Run `rails s -p 3000`
 
 ## Client-Side Install Instructions
-1. Run `npm install`
-2. Run `npm start`
+1. `cd math-front-end`
+2. Run `npm install`
+3. Run `npm start`
 
 ## Contributing
 [Contributing Guide](./CONTRIBUTING.md)
