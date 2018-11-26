@@ -2,6 +2,8 @@
 
 *Math for Piglets*, a math-learning application with a built-in reward system, directed towards children.
 
+**Check out the hosted project on Heroku:** https://math-for-piglets.herokuapp.com/
+
 ![Screenshot](readmeImg.png)
 
 ## Video Demo
